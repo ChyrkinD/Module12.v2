@@ -1,40 +1,40 @@
 package org.example.dao;
 
 import org.example.config.HibernateUtil;
-import org.example.dao.model.Client;
+import org.example.dao.model.Ticket;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class ClientDao {
+public class TicketDao {
     private SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
 
-    public void save(Client client) {
+    public void save(Ticket ticket) {
         try(Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.persist(client);
+            session.persist(ticket);
             transaction.commit();
         }
     }
 
-    public Client findById(Long id) {
+    public Ticket findById(int id) {
         try(Session session = sessionFactory.openSession()) {
-            return session.get(Client.class, id);
+            return session.get(Ticket.class, id);
         }
     }
 
-    public void update(Client client) {
+    public void update(Ticket ticket) {
         try(Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(client);
+            session.update(ticket);
             transaction.commit();
         }
     }
 
-    public void delete(Client client) {
+    public void delete(Ticket ticket) {
         try(Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.delete(client);
+            session.delete(ticket);
             transaction.commit();
         }
     }

@@ -12,7 +12,7 @@ public class PlanetDao {
     public void save(Planet planet) {
         try(Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(planet);
+            session.persist(planet);
             transaction.commit();
         }
     }
